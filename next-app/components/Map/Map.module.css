@@ -1,0 +1,31 @@
+.controllers{
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 3;
+}
+
+.control{
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    width: 29px;
+    height: 29px;
+    margin: 5px;
+    display: flex;
+    outline: none;
+    border: 0;
+    color: #000000;
+    box-sizing: border-box;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    font-size: 24px;
+    box-shadow: 0 0 0 2px rgb(0 0 0 / 10%);
+}

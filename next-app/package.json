@@ -9,9 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.2.5",
+    "deck.gl": "^8.8.9",
+    "lodash": "^4.17.21",
+    "mapbox-gl": "^2.10.0",
+    "next": "^12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.4.0",
+    "react-map-gl": "^5",
+    "react-particles": "^2.2.4",
+    "react-tsparticles": "^2.2.4",
+    "tsparticles": "^2.2.4",
+    "tsparticles-engine": "^2.2.4",
+    "tsparticles-preset-links": "^2.2.4"
   },
   "devDependencies": {
     "@types/node": "18.7.13",
