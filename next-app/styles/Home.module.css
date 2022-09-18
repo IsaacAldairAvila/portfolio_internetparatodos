@@ -2,6 +2,7 @@
 .main {
   height: calc(100vh - 10px);
   width: calc(100vw - 10px);
+  max-width: calc(100vw - 10px);
   margin: 5px;
   flex: 1;
   display: flex;
@@ -11,16 +12,7 @@
   background-color: white;
 }
 
-.navbar{
-  border-radius: 5px;
-  margin: 5px;
-  display: flex;
-  width: calc(100% - 10px);
-  height: 60px;
-  backdrop-filter: blur(3px);
-  background: linear-gradient(180deg, #1D1D1Db3 0%, #303030b3 100%);
-  z-index: 1;
-}
+
 
 .content{
   width: 100%;
@@ -31,29 +23,33 @@
 
 .map{
   display: flex;
+  width: 100%;
+  height: 70%;
+}
+.center{
+  display: flex;
   width: calc(100% - 10px);
   height: calc(100% -10px);
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
 }
 
-.sidebar{
-  backdrop-filter: blur(3px);
-  background: linear-gradient(180deg, #1D1D1Db3 0%, #303030b3 100%);
-  border-radius: 5px;
-  margin: 5px;
-  height: calc(100% - 10px);
-  /* border: 1px solid green; */
-  z-index: 1;
-  width: calc(300px - 10px);
-  min-width: calc(300px - 10px);
-}
+
 
 .infobar{
+  backdrop-filter: blur(3px);
+  margin-bottom: 10px;
+  height: calc(30% - 10px);
+  z-index: 1;
+  width: 100%;
+  min-width: calc(300px - 10px);
+  background-color: #1D1D1Db3;
+  border: 2px solid #303030b3;
+  border-radius: 3px;
   display: flex;
-  position: absolute;
-  width: calc( 100% - 300px - 10px);
-  height: 100px;
-  bottom: 5px;
-  /* border: 1px solid blue; */
-  right: 5px;
+  flex-direction: row;
 }
 
