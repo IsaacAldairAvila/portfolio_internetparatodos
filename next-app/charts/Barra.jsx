@@ -3,9 +3,9 @@ import dynamic from 'next/dynamic';
 import styles from './Charts.module.css'
 const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-const ApexChart = ({ title }) => {
+const ApexChart = ({ title, data, color, name }) => {
     const series = [{
-        data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
+        data: data
     }]
     const options = {
         chart: {
@@ -28,9 +28,7 @@ const ApexChart = ({ title }) => {
                 },
             }
         },
-        colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
-            '#f48024', '#69d2e7'
-        ],
+        colors: color,
         dataLabels: {
             enabled: true,
             textAnchor: 'start',
@@ -50,9 +48,7 @@ const ApexChart = ({ title }) => {
             colors: ['#fff']
         },
         xaxis: {
-            categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-                'United States', 'China', 'India'
-            ],
+            categories: name,
         },
         yaxis: {
             labels: {
@@ -65,22 +61,27 @@ const ApexChart = ({ title }) => {
         legend: {
             show: false
         },
-        theme:{
-            mode: 'dark', 
+        theme: {
+            mode: 'dark',
         }
     }
     return (
         <div className={styles.chart}>
-            <p className={styles.title}>
-                {title}
-            </p>
-            <ReactApexChart
-                options={options}
-                series={series}
-                type="bar"
-                height={'70%'}
-                width={'100%'}
-            />
+            <div className={styles.graphsidebar}>
+                <p className={styles.toptitle}>
+                    {title}
+                </p>
+                <p className={styles.sidebargr}>
+                    <ReactApexChart
+                        options={options}
+                        series={series}
+                        type="bar"
+                        height={'100%'}
+                        width={'100%'}
+                    />
+                </p>
+
+            </div>
         </div>
     )
 }

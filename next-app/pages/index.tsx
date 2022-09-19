@@ -13,12 +13,22 @@ import RadialTipoConexion from '../charts/RadialTipoConexion'
 import CircularTipoRed from '../charts/PieChart'
 import ListTop from '../charts/LIstTop'
 import Infobar from '../charts/InfoBar'
+import Listbar from '../components/listbar/Listbar'
+import useIsMounted from '../hook/useIsMounted.jsx'
 const Home: NextPage = () => {
   const datapuntos = DATA_JSON
   const dataconsumo = INFO_JSON
   // const geodata = Arreglo(datapuntos, ObjectData(datapuntos))
   const [viewState, setViewState] = useState({ longitude: -79.797, latitude: 8.719, zoom: 7, pitch: 0, bearing: 0 })
+  const isMounted = useIsMounted()
 
+  if (!isMounted) {
+    return (<>
+      <div>
+        cargando
+      </div>
+    </>)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -27,13 +37,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <ParticlesContainer />
         <Navbar />
         <div className={styles.content}>
-          {/* <Sidebar /> */}
+          <Listbar />
           <div className={styles.center}>
             <div className={styles.infobar}>
-              {/* <Infobar /> */}
+              <Infobar />
               <RadialTipoConexion />
               <CircularTipoRed />
               <ListTop />
@@ -45,9 +54,10 @@ const Home: NextPage = () => {
               />
             </div>
           </div>
-          {/* <Sidebar /> */}
+          <Sidebar />
         </div>
       </main>
+      <ParticlesContainer />
     </div>
   )
 }

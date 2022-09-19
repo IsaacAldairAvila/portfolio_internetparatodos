@@ -114,7 +114,7 @@ const MapHook = ({dataconsumo, datapuntos}) => {
         style={{ zIndex: 2 }}
         attributionControl={false}
         mapboxApiAccessToken={"pk.eyJ1IjoiZ2F0ZWNocGFuYW1hIiwiYSI6ImNsMmFxNWp1eTA3c3gzaXFkc3BmdmJtbzcifQ.UDFysfj6fP1Lkdsc93Bfhw"}
-        mapStyle={"mapbox://styles/gatechpanama/cl77zw77x001214ogx5omj4f1"}
+        mapStyle={"mapbox://styles/gatechpanama/cl8235dw0006314o9ymfavnbr"}
       >
       </StaticMap>
     </DeckGL>

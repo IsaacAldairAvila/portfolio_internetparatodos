@@ -23,7 +23,7 @@ a {
   }
   body {
     color: white;
-    background: white;
+    background: black;
   }
 }
 
@@ -35,6 +35,7 @@ a {
   padding: 0;
   top: 0;
   left: 0;
+  z-index: -1000;
 }
 
 .App{
