@@ -39,7 +39,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <Navbar />
         <div className={styles.content}>
-          <Listbar />
+          {/* <Listbar /> */}
           <div className={styles.center}>
             <div className={styles.infobar}>
               <Infobar />
