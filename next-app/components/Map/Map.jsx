@@ -1,19 +1,48 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DeckGL from '@deck.gl/react/typed';
 import { _MapContext as MapContext, StaticMap } from 'react-map-gl';
 import { HeatmapLayer } from '@deck.gl/aggregation-layers/typed';
 import { ScatterplotLayer } from '@deck.gl/layers/typed';
 import { ColumnLayer } from '@deck.gl/layers/typed';
 import { HexagonLayer } from '@deck.gl/aggregation-layers/typed';
-
+import useIsCapaMapa from '../../hook/useIsCapaMapa'
 import MapControl from './MapControl';
-import {IconLayer} from '@deck.gl/layers';
+import { IconLayer } from '@deck.gl/layers';
 
 const ICON_MAPPING = {
-  marker: {x: 0, y: 0, width: 128, height: 128, mask: true}
+  marker: { x: 0, y: 0, width: 128, height: 128, mask: true }
 };
 
-const MapHook = ({dataconsumo, datapuntos}) => {
+const MapHook = ({ dataconsumo, datapuntos }) => {
+  const isCapa = useIsCapaMapa()
+  const [geodata, setGeodata] = useState([])
+
+  useEffect(() => {
+    if (isCapa === 'grafico') {
+      setGeodata(
+        [
+          hexagon
+        ]
+      )
+    }
+    else if (isCapa === 'calor') {
+      setGeodata(
+        [
+          heatmap,
+          column
+        ]
+      )
+    }
+    else {
+      setGeodata(
+        [
+          icon
+        ]
+      )
+    }
+  }, [isCapa])
+
+  console.log(isCapa)
   const datagb = (id) => {
     let value = 0
 
@@ -70,7 +99,7 @@ const MapHook = ({dataconsumo, datapuntos}) => {
     iconAtlas: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
     iconMapping: ICON_MAPPING,
     getIcon: d => 'marker',
-    sizeScale: 5,
+    sizeScale: 1,
     getPosition: d => [d.longitude, d.latitude],
     getSize: d => 5,
     getColor: d => [Math.sqrt(datagb(d.id)), 140, 0]
@@ -101,13 +130,14 @@ const MapHook = ({dataconsumo, datapuntos}) => {
   return (
 
     <DeckGL
-      layers={layer}
+      layers={geodata}
       ContextProvider={MapContext.Provider}
       initialViewState={viewState}
       controller={true}
-      getTooltip={({object}) => object && `${object.Nombre}\n${datagb(object.id)}`}
-      style={{ borderRadius: '3px', overflow: 'hidden', position: 'relative', width: '100%', height: '100%', zIndex: '0' ,border: '2px solid #303030b3'
-    }}
+      getTooltip={({ object }) => object && `${object.Nombre}\n${datagb(object.id)}`}
+      style={{
+        borderRadius: '3px', overflow: 'hidden', position: 'relative', width: '100%', height: '100%', zIndex: '0', border: '2px solid #303030b3'
+      }}
     >
       <MapControl />
       <StaticMap
